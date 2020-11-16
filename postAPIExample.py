@@ -1,10 +1,13 @@
 import requests
 import json
 from payLoad import *
+from utilities.configurations import *
+from utilities.resources import *
 
 
 ## Add
-response = requests.post("http://216.10.245.166/Library/Addbook.php",
+add_book_url = getConfig()['API']['endpoint'] + APIResourses.add_book
+response = requests.post(add_book_url,
                         json=addBookPayLoad(isbn="awer"),
                         headers={
                             "Content-Type" : "application/json"
@@ -16,7 +19,8 @@ print(response.json()['ID'])
 print(response.json())
 
 ## Delete
-delete_response = requests.delete("http://216.10.245.166/Library/DeleteBook.php",
+delete_book_url = getConfig()['API']['endpoint'] + APIResourses.delete_book
+delete_response = requests.delete(getConfig()['API']['endpoint'] + "/Library/DeleteBook.php",
                            json={
                                "ID" : bookID
                            })

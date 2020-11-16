@@ -1,14 +1,15 @@
 import requests
 import json
 import configparser
+from utilities.configurations import *
+from utilities.resources import *
 
-config = configparser.ConfigParser().read('utilities/properties.ini')
-response = requests.get(config['API']['endpoint'] + "/Library/GetBook.php",
+get_book_url = getConfig()['API']['endpoint'] + APIResourses.get_book
+response = requests.get(get_book_url,
                         params={
                             'AuthorName': 'Rahul Shetty'
                         },
                         )
-
 print(response.text)
 print(type(response.text))
 
@@ -28,6 +29,14 @@ expectedBook = {'book_name': 'Learn API Automation with RestAssured', 'isbn': 'R
 
 for res in response_json:
     if res["isbn"] == "RGHCC":
-        assert expectedBook == res #assertion also can each object other
+        assert expectedBook == res  # assertion also can each object other
         break
 
+
+#-----------------------
+#Github getUser
+print("Github getUser")
+get_github_user_url = "https://api.github.com/user"
+response = requests.get(get_github_user_url, auth=('yoodahun', ''))
+print(response.status_code)
+print(response.text)
