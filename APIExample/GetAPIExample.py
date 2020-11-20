@@ -36,7 +36,13 @@ for res in response_json:
 #-----------------------
 #Github getUser
 print("Github getUser")
+se = requests.session()
+se.auth = ('yoodahun', '')
 get_github_user_url = "https://api.github.com/user"
-response = requests.get(get_github_user_url, auth=('yoodahun', ''))
+response = se.get(get_github_user_url)
 print(response.status_code)
+print(response.text)
+
+get_github_url = "https://api.github.com"
+response = se.get(get_github_url+"/user/repos")
 print(response.text)
