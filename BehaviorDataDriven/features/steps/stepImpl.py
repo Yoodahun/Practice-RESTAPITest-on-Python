@@ -24,12 +24,7 @@ def step_impl(context):
 
 @then('book is successfully added')
 def step_impl(context):
-    bookID = context.response.json()['ID']
-
-    requests.delete(getConfig()['API']['endpoint'] + APIResourses.delete_book,
-                    json={
-                        "ID": bookID
-                    })
+    context.bookID = context.response.json()['ID']
 
     assert context.response.status_code == 200
     assert context.response.json()['Msg'] == "successfully added"
