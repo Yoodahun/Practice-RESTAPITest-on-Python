@@ -10,9 +10,10 @@ def getConfig():
 
 
 def getSQLConnection():
-    connection_data = getConfig()['SQL']
+
 
     try:
+        connection_data = getConfig()['SQL']
         sql_connection = mysql.connector.connect(
             host=connection_data['host'],
             database=connection_data['database'],
@@ -24,3 +25,13 @@ def getSQLConnection():
             return sql_connection
     except Error as e:
         print(e)
+
+
+def getQuery(query):
+
+    connection_data = getSQLConnection()
+    cursor = connection_data.cursor()
+    cursor.execute(query)
+    result_db = cursor.fetchone()
+    connection_data.close()
+    return result_db

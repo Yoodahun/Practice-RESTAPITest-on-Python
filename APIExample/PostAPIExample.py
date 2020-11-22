@@ -6,13 +6,14 @@ from utilities.resources import *
 
 ## Add
 add_book_url = getConfig()['API']['endpoint'] + APIResourses.add_book
+query = "select * from books"
 response = requests.post(add_book_url,
-                         json=addBookPayLoad(isbn="awer"),
+                         json=buildPayLoadFromDB(query),
                          headers={
                              "Content-Type": "application/json"
                          }
                          )
-
+print(response.text)
 bookID = response.json()['ID']
 print(response.json()['ID'])
 print(response.json())
