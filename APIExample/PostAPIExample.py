@@ -1,6 +1,5 @@
 import requests
-import json
-from PayLoad import *
+from APIExample.PayLoad import *
 from utilities.configurations import *
 from utilities.resources import *
 
