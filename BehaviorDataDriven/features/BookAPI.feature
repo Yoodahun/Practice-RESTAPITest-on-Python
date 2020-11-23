@@ -3,14 +3,15 @@
 Feature: Verify if Books are added and deleted using Library API
   # Enter feature description here
 
-  @Smoke
+  @Library @Smoke
   Scenario: Verify AddBook API functionality
     # Enter steps here
     Given the Book details which needs to be added to Library
     When We execute the AddBook PostAPI method
     Then book is successfully added
+    And status code of response should be 200
 
-  @Regression
+  @Library @Regression
   Scenario Outline: Verify AddBook API functionality
     # Enter steps here
     Given the Book details with <isbn> and <aisle>
@@ -18,5 +19,5 @@ Feature: Verify if Books are added and deleted using Library API
     Then book is successfully added
     Examples:
       |isbn  | aisle  |
-      |dfdf  | 23219  |
-      |isbn1 | 234212 |
+      |isbn20 | 23219231  |
+      |isbn17 | 234 |

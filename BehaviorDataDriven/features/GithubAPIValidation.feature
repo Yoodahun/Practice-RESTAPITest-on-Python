@@ -2,6 +2,7 @@
 Feature: Github API Validation
   # Enter feature description here
 
+  @Github
   Scenario: Session management check
    Given I have github auth credential
     When I hit getRepo API of github

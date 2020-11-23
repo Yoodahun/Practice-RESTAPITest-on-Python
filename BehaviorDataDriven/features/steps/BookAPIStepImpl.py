@@ -25,6 +25,7 @@ def step_impl(context):
 
 @then('book is successfully added')
 def step_impl(context):
+    print(context.response.text)
     context.bookID = context.response.json()['ID']
 
     assert context.response.status_code == 200
