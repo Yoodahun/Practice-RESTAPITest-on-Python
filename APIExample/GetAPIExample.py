@@ -4,7 +4,7 @@ import configparser
 from utilities.configurations import *
 from utilities.resources import *
 
-get_book_url = getConfig()['API']['endpoint'] + APIResourses.get_book
+get_book_url = getConfig()['API']['endpoint'] + APIResourses.GET_BOOK
 response = requests.get(get_book_url,
                         params={
                             'AuthorName': 'Rahul Shetty'

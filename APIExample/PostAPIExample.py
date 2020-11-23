@@ -4,7 +4,7 @@ from utilities.configurations import *
 from utilities.resources import *
 
 ## Add
-add_book_url = getConfig()['API']['endpoint'] + APIResourses.add_book
+add_book_url = getConfig()['API']['endpoint'] + APIResourses.ADD_BOOK
 query = "select * from books"
 response = requests.post(add_book_url,
                          json=buildPayLoadFromDB(query),
@@ -18,7 +18,7 @@ print(response.json()['ID'])
 print(response.json())
 
 ## Delete
-delete_book_url = getConfig()['API']['endpoint'] + APIResourses.delete_book
+delete_book_url = getConfig()['API']['endpoint'] + APIResourses.DELETE_BOOK
 delete_response = requests.delete(getConfig()['API']['endpoint'] + "/Library/DeleteBook.php",
                                   json={
                                       "ID": bookID

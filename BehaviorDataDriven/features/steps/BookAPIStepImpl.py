@@ -8,7 +8,7 @@ import requests
 
 @given('the Book details which needs to be added to Library')
 def step_impl(context):
-    context.add_book_url = getConfig()['API']['endpoint'] + APIResourses.add_book
+    context.add_book_url = getConfig()['API']['endpoint'] + APIResourses.ADD_BOOK
     query = "select * from books"
     context.payload = buildPayLoadFromDB(query)
 
@@ -39,5 +39,5 @@ def step_impl(context, isbn, aisle):
     :type aisle: str
     """
     print("start Scenario Outline")
-    context.add_book_url = getConfig()['API']['endpoint'] + APIResourses.add_book
+    context.add_book_url = getConfig()['API']['endpoint'] + APIResourses.ADD_BOOK
     context.payload = addBookPayLoad(isbn, aisle)

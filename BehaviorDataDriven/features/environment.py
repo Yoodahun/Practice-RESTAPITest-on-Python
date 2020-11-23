@@ -5,7 +5,7 @@ from utilities.resources import *
 
 
 def after_scenario(context, scenario):
-    response = requests.delete(getConfig()['API']['endpoint'] + APIResourses.delete_book,
+    response = requests.delete(getConfig()['API']['endpoint'] + APIResourses.DELETE_BOOK,
                                json={
                                    "ID": context.bookID
                                }
