@@ -1,5 +1,6 @@
 from behave import *
 from utilities.configurations import *
+from utilities.resources import *
 import requests
 
 
@@ -12,11 +13,11 @@ def step_impl(context):
 
 @when('I hit getRepo API of github')
 def step_impl(context):
+    context.response = context.session.get(APIResourses.GET_GITHUB_USER_URL)
 
-    context.response = context.session.get(get_github_user_url)
 
-
-@then('status code of response should be 200')
-def step_impl(context):
+@then('status code of response should be {status_code:d}')
+def step_impl(context, status_code):
     print(context.response.text)
-    assert context.response.status_code == 200
+    print(context.response.status_code)
+    assert context.response.status_code == status_code
