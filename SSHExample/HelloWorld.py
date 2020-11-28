@@ -1,0 +1,1 @@
+print("Hello world! this is python code in AWS Linux EC2")

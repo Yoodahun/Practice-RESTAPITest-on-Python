@@ -1,5 +1,7 @@
 import paramiko
+import csv
 from utilities.configurations import *
+
 
 
 hostname = getConfig()['AWS']['host']
@@ -17,14 +19,27 @@ ssh.connect(
     password=password
 )
 
-stdin, stdout, stderr = ssh.exec_command("ls -a")
+stdin, stdout, stderr = ssh.exec_command("python3 HelloWorld.py")
 print(stdout.readlines())
 
 #Upload
-# stfp = ssh.open_sftp()
-# destination_path = "practiceCSV.csv"
-# local_path = "utilities/practiceCSV.csv"
-# stfp.put(local_path, destination_path) #upload method
+stfp = ssh.open_sftp()
+destination_path = "HelloWorld.py"
+local_path = "SSHExample/HelloWorld.py"
+stfp.put(local_path, destination_path) #upload method
+
+#Trigger the batch Command?
+stdin, stdout, stderr = ssh.exec_command("python script.py")
+
+#Download the file to local folder
+stfp.get("demofile", "SSHExample/downloadedFile/demofile.txt")
+
+#Parse output file csv
+with open("~~") as csvFile:
+    csv_reader = csv.reader(csvFile, delimiter=',')
+    for row in csv_reader:
+        if row[0] == "~~":
+            assert row[1] == "rejected"
 
 stdin.close()
 
