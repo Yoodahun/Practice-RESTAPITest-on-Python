@@ -35,11 +35,11 @@ stdin, stdout, stderr = ssh.exec_command("python script.py")
 stfp.get("demofile", "SSHExample/downloadedFile/demofile.txt")
 
 #Parse output file csv
-with open("~~") as csvFile:
-    csv_reader = csv.reader(csvFile, delimiter=',')
-    for row in csv_reader:
-        if row[0] == "~~":
-            assert row[1] == "rejected"
+# with open("~~") as csvFile:
+#     csv_reader = csv.reader(csvFile, delimiter=',')
+#     for row in csv_reader:
+#         if row[0] == "~~":
+#             assert row[1] == "rejected"
 
 stdin.close()
 
