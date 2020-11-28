@@ -17,7 +17,14 @@ ssh.connect(
     password=password
 )
 
-stdin, stdout, stderr = ssh.exec_command("cat demofile")
+stdin, stdout, stderr = ssh.exec_command("ls -a")
 print(stdout.readlines())
+
+#Upload
+# stfp = ssh.open_sftp()
+# destination_path = "practiceCSV.csv"
+# local_path = "utilities/practiceCSV.csv"
+# stfp.put(local_path, destination_path) #upload method
+
 stdin.close()
 
