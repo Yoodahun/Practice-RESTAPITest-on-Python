@@ -24,8 +24,8 @@ print(stdout.readlines())
 
 #Upload
 stfp = ssh.open_sftp()
-destination_path = "HelloWorld.py"
-local_path = "SSHExample/HelloWorld.py"
+destination_path = "practiceCSV.csv"
+local_path = "utilities/practiceCSV.csv"
 stfp.put(local_path, destination_path) #upload method
 
 #Trigger the batch Command?
